@@ -18,10 +18,16 @@ $(document).ready(function (){
     });
 
     // when a file is dropped (or multiple) close the box and add the files content to an array
-    dropBox.addEventListener('drop', event => {
+    dropBox.addEventListener('drop', async(event) => {
         event.preventDefault();
 
-        console.log(event.dataTransfer.files);
+        for(let file of event.dataTransfer.files){
+            if(new RegExp("^.*\.(svg)$").test(file.name)){
+
+                files.content.push({name: file.name, content: await files.read(file)});
+
+            }
+        }
         
         dropBox.style.display = 'none';
     });
