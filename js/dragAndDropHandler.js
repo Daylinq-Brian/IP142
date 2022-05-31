@@ -20,6 +20,8 @@ $(document).ready(function (){
     // when a file is dropped (or multiple) close the box and add the files content to an array
     dropBox.addEventListener('drop', event => {
         event.preventDefault();
+
+        console.log(event.dataTransfer.files);
         
         dropBox.style.display = 'none';
     });
