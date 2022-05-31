@@ -24,7 +24,10 @@ $(document).ready(function (){
         for(let file of event.dataTransfer.files){
             if(new RegExp("^.*\.(svg)$").test(file.name)){
 
-                files.content.push({name: file.name, content: await files.read(file)});
+                files.content.push({
+                    name: file.name, 
+                    content: await files.read(file)
+                });
 
             }
         }
