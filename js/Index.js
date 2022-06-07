@@ -22,4 +22,9 @@ $(document).ready(function (){
     
         displayList();
     });
+
+    // making the better looking upload button fire the ugly html one
+    document.getElementById('file-input-button').addEventListener('click', () => {
+        document.getElementById('file-input').click();
+    });
 });

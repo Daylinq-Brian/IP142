@@ -1,5 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@700&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@700&display=swap');
+
 body{
     min-height: 100vh;
+    background-color: #EEEEF1;
+    font-family: 'Roboto', sans-serif;
 }
 
 #file-drop-box{
@@ -9,9 +14,62 @@ body{
     display: none;
 }
 
+/* hiding the origional html upload box */
+#file-input{
+    display: none;
+}
+
 #wrapper{
     display: flex;
     flex-direction: column;
+    align-items: center;
+}
+
+/* header styling */
+#header{
+    font-family: 'Fira Sans', sans-serif;
+}
+
+#header h1{
+    font-size: 40px;
+    color:#323C50;
+}
+
+#header-title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#export-button{
+    margin-left: 20px;
+    height: 40px;
+    font-size: 25px;
+    border: none;
+    background-color: #323C50;
+    color: #FFF;
+    padding: 0 20px;
+    border-radius: 10px;
+}
+
+#header-svg-amount{
+    color: rgb(0, 205, 135);
+}
+
+#header-buttons button{
+    height: 30px;
+    padding: 0 15px;
+    border: none;
+    background-color: #323C50;
+    color: #FFF;
+    border-radius: 5px;
+}
+
+#header-buttons input{
+    height: 30px;
+    padding: 0 15px;
+    border: none;
+    border-radius: 5px;
 }
 
 #svg-list{

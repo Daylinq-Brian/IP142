@@ -25,15 +25,20 @@ ____/\\\\\\\\\_______________________________________
 <body id="body">
 
     <div id="wrapper">
-        <button id="export-button">Export File(s)</button>
-        <input type="text" placeholder="filename" id="file-name-input">
-        <input type="number" placeholder="viewbox-x" id="viewbox-x-input">
-        <input type="number" placeholder="viewbox-y" id="viewbox-y-input">
+        <div id="header">
+            <div id="header-title">
+                <h1>SVG tool</h1><button id="export-button"><span id="header-svg-amount">98</span> SVG's</button>
+            </div><!-- header-title -->
+            <div id="header-buttons">
+                <input type="text" placeholder="filename" id="file-name-input">
+                <input type="number" placeholder="viewbox-x" id="viewbox-x-input">
+                <input type="number" placeholder="viewbox-y" id="viewbox-y-input">
+                <button id="rename-button">Rename files</button>
+                <button id="file-input-button">upload</button>
+                <input type="file" id="file-input" multiple>
+            </div><!-- header-buttons -->
+        </div><!-- header -->
         <input type="checkbox" id="minify-input">
-        <input type="file" id="file-input" multiple>
-        <div id="svg-list-controls">
-            <button id="rename-button">Rename files</button>
-        </div><!-- svg-list-controls -->
         <div id="svg-list">
 
         </div><!-- svg-list -->
