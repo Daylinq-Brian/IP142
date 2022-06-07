@@ -29,11 +29,12 @@ exporter.makeFile = async() => {
     // filling the template
     template = template.replaceAll('__VIEWBOX-X__', options.viewbox.value.x);
     template = template.replaceAll('__VIEWBOX-Y__', options.viewbox.value.y);
-    template = template.replace('__STYLING__', styleString);
+    template = template.replace('__STYLING__', options.minify.input.checked ? vkbeautify.cssmin(styleString) : styleString);
     template = template.replace('__GROUPS__', groupString);
     
-    console.log(template);
-    exporter.download(options.name.input.value == '' ? `${options.name.value}.svg` : `${options.name.input.value}.svg`, template);
+    console.log(options.minify.input.checked ? vkbeautify.xmlmin(template) : vkbeautify.xml(template));
+    exporter.download(options.name.input.value == '' ? `${options.name.value}.svg` : `${options.name.input.value}.svg`, 
+                      options.minify.input.checked ? vkbeautify.xmlmin(template) : vkbeautify.xml(template));
 }
 
 // this function loads the template

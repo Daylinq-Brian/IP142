@@ -24,5 +24,5 @@ $(document).ready(function (){
     options.name.input = document.getElementById('file-name-input');
     options.viewbox.input.x = document.getElementById('viewbox-x-input');
     options.viewbox.input.y = document.getElementById('viewbox-y-input');
-    // options.minify.input = document.getElementById('');
+    options.minify.input = document.getElementById('minify-input');
 });
