@@ -8,3 +8,33 @@ body{
     background-color: salmon;
     display: none;
 }
+
+#wrapper{
+    display: flex;
+    flex-direction: column;
+}
+
+#svg-list{
+    font-family: monospace;
+}
+
+.svg-list-item{
+    display: flex;
+    flex-direction: row;
+}
+
+.svg-list-item-preview{
+    width: 100px;
+    height: 100px;
+}
+
+.svg-list-item-name{
+    height: 100px;
+    display: flex;
+    align-items: center;
+}
+
+.svg-list-item-name input{
+    font-family: monospace;
+    width: 100%;
+}

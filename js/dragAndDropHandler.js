@@ -25,7 +25,7 @@ $(document).ready(function (){
             if(new RegExp("^.*\.(svg)$").test(file.name)){
 
                 files.content.push({
-                    name: file.name, 
+                    name: file.name.replaceAll(' ', '_'), 
                     content: await files.read(file)
                 });
 
@@ -33,5 +33,6 @@ $(document).ready(function (){
         }
         
         dropBox.style.display = 'none';
+        displayList();
     });
 });
