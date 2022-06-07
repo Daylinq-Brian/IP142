@@ -1,5 +1,18 @@
 <!DOCTYPE html>
 <html lang="nl">
+    <!--
+        
+____/\\\\\\\\\_______________________________________        
+ __/\\\///////\\\________________________/\\\_________       
+  _\/\\\_____\/\\\____/\\\_______________\/\\\_________      
+   _\/\\\\\\\\\\\/____\///______/\\\\\\\\_\/\\\\\\\\____     
+    _\/\\\//////\\\_____/\\\___/\\\//////__\/\\\////\\\__    
+     _\/\\\____\//\\\___\/\\\__/\\\_________\/\\\\\\\\/___   
+      _\/\\\_____\//\\\__\/\\\_\//\\\________\/\\\///\\\___  
+       _\/\\\______\//\\\_\/\\\__\///\\\\\\\\_\/\\\_\///\\\_ 
+        _\///________\///__\///_____\////////__\///____\///__
+
+    -->
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,6 +25,9 @@
 
     <div id="wrapper">
         <button id="export-button">Export File(s)</button>
+        <input type="text" placeholder="filename" id="file-name-input">
+        <input type="number" placeholder="viewbox-x" id="viewbox-x-input">
+        <input type="number" placeholder="viewbox-y" id="viewbox-y-input">
         <div id="svg-list-controls">
             <button id="rename-button">Rename files</button>
         </div><!-- svg-list-controls -->
@@ -25,6 +41,7 @@
     <div id="file-drop-box"></div>
 
     <script src="js/index.js"></script>
+    <script src="js/userOptions.js"></script>
     <script src="js/fileHandler.js"></script>
     <script src="js/svgFormatter.js"></script>
     <script src="js/dragAndDropHandler.js"></script>

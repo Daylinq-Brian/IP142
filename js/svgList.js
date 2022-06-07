@@ -11,11 +11,13 @@ $(document).ready(function (){
             let svgId = parseInt(listItem.id.slice(4));
 
             // changing the name in the files array
-            files.content[svgId].name = `${listItem.getElementsByTagName('input')[0].value}.svg`;
-
-            // showing the new list
-            displayList();
+            if(listItem.getElementsByTagName('input')[0].value != ''){
+                files.content[svgId].name = (`${listItem.getElementsByTagName('input')[0].value}.svg`).replaceAll(' ', '_');
+            }
         }
+
+        // showing the new list
+        displayList();
     });
 });
 
@@ -44,13 +46,19 @@ function displayList(){
         // making an input
         let listSVGnameInput = document.createElement('input');
         listSVGnameInput.type = 'text';
-        listSVGnameInput.value = file.name.slice(0, -4);
 
-        // appending the input
+        // name container
+        let listSVGnameContainer = document.createElement('div');
+        listSVGnameContainer.className = 'svg-list-item-name-container';
+        listSVGnameContainer.innerHTML = file.name.slice(0, -4);
+
+        // appending the input and name
         listSVGname.append(listSVGnameInput);
+        listSVGname.append(listSVGnameContainer);
 
         // making the delete button
         let listSVGdeleteButton = document.createElement('button');
+        listSVGdeleteButton.className = 'svg-list-item-button';
         listSVGdeleteButton.innerHTML = 'delete SVG';
         listSVGdeleteButton.addEventListener('click', () => {
             files.content.splice([files.content.indexOf(file)], 1);
