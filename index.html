@@ -26,8 +26,12 @@ ____/\\\\\\\\\_______________________________________
 
     <div id="wrapper">
         <div id="header">
+            <div id="header-top-bar">
+                <label for="minify-input" id="minify-input-label">minify: off</label>
+                <input type="checkbox" id="minify-input" label="minify-input">
+            </div>
             <div id="header-title">
-                <h1>SVG tool</h1><button id="export-button"><span id="header-svg-amount">98</span> SVG's</button>
+                <h1>SVG tool</h1><button id="export-button"><span id="header-svg-amount">0</span> SVG's</button>
             </div><!-- header-title -->
             <div id="header-buttons">
                 <input type="text" placeholder="filename" id="file-name-input">
@@ -38,7 +42,6 @@ ____/\\\\\\\\\_______________________________________
                 <input type="file" id="file-input" multiple>
             </div><!-- header-buttons -->
         </div><!-- header -->
-        <input type="checkbox" id="minify-input">
         <div id="svg-list">
 
         </div><!-- svg-list -->

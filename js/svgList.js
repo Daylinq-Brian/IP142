@@ -34,10 +34,25 @@ function displayList(){
         listItem.className = 'svg-list-item';
         listItem.id = `svg_${files.content.indexOf(file)}`;
 
+        // making the delete button
+        let listSVGdeleteButton = document.createElement('button');
+        listSVGdeleteButton.className = 'svg-list-item-button';
+        listSVGdeleteButton.innerHTML = 'delete SVG';
+        listSVGdeleteButton.addEventListener('click', () => {
+            files.content.splice([files.content.indexOf(file)], 1);
+            updateAmount();
+            displayList();
+        });
+
         // creating list svg preview
         let listSVGpreview = document.createElement('div');
         listSVGpreview.className = 'svg-list-item-preview';
-        listSVGpreview.innerHTML = file.content;
+        listSVGpreview.append(listSVGdeleteButton);
+
+        let listSVGimg = document.createElement('img');
+        listSVGimg.src = `data:image/svg+xml;base64,${window.btoa(file.content)}`;
+        listSVGpreview.append(listSVGimg);
+        // listSVGpreview.innerHTML += file.content;
 
         // creating list name box
         let listSVGname = document.createElement('div');
@@ -56,19 +71,9 @@ function displayList(){
         listSVGname.append(listSVGnameInput);
         listSVGname.append(listSVGnameContainer);
 
-        // making the delete button
-        let listSVGdeleteButton = document.createElement('button');
-        listSVGdeleteButton.className = 'svg-list-item-button';
-        listSVGdeleteButton.innerHTML = 'delete SVG';
-        listSVGdeleteButton.addEventListener('click', () => {
-            files.content.splice([files.content.indexOf(file)], 1);
-            displayList();
-        });
-
         // appending all list item elements
         listItem.append(listSVGpreview);
         listItem.append(listSVGname);
-        listItem.append(listSVGdeleteButton);
 
         list.append(listItem);
     }

@@ -12,15 +12,16 @@ $(document).ready(function (){
     // making the upload button functional
     document.getElementById('file-input').addEventListener('change', async() => {
         for (let file of document.getElementById('file-input').files){
-            if(new RegExp("^.*\.(svg)$").test(file.name)){
+            if(!files.content.some(object => object.name == file.name.replaceAll(' ', '_'))){
                 files.content.push({
-                    name: file.name.replaceAll(' ', '_'),
+                    name: file.name.replaceAll(' ', '_'), 
                     content: await files.read(file)
                 });
             }
-        }
     
-        displayList();
+            updateAmount();
+            displayList();
+        }
     });
 
     // making the better looking upload button fire the ugly html one
@@ -28,3 +29,8 @@ $(document).ready(function (){
         document.getElementById('file-input').click();
     });
 });
+
+// making the number in the export button update
+function updateAmount(){
+    document.getElementById('header-svg-amount').innerHTML = files.content.length;
+}

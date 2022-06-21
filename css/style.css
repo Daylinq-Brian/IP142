@@ -28,6 +28,7 @@ body{
 /* header styling */
 #header{
     font-family: 'Fira Sans', sans-serif;
+    width: 100%;
 }
 
 #header h1{
@@ -56,6 +57,11 @@ body{
     color: rgb(0, 205, 135);
 }
 
+#header-buttons{
+    display: flex;
+    justify-content: center;
+}
+
 #header-buttons button{
     height: 30px;
     padding: 0 15px;
@@ -63,6 +69,7 @@ body{
     background-color: #323C50;
     color: #FFF;
     border-radius: 5px;
+    margin: 0 5px;
 }
 
 #header-buttons input{
@@ -70,32 +77,50 @@ body{
     padding: 0 15px;
     border: none;
     border-radius: 5px;
+    margin: 0 5px;
 }
 
+#minify-input{
+    display: none;
+}
+
+#minify-input-label{
+    font-size: 13px;
+}
+
+/* list */
+
+/**** id and classnames for list items  
+
+
+#svg-list
+
+.svg-list-item
+
+.svg-list-item-preview
+
+.svg-list-item-name
+
+.svg-list-item-name input
+
+.svg-list-item-button
+ */
+
 #svg-list{
-    font-family: monospace;
+    display: flex;
+    flex-flow: wrap;
+    justify-content: center;
+    width: 100%;
 }
 
 .svg-list-item{
-    display: flex;
-    flex-direction: row;
+    width: 300px;
+    margin: 10px;
 }
 
 .svg-list-item-preview{
-    width: 100px;
-    height: 100px;
-}
-
-.svg-list-item-name{
-    height: 100px;
-    width: 100%;
     display: flex;
-    align-items: center;
-}
-
-.svg-list-item-name input{
-    font-family: monospace;
-    width: 250px;
+    flex-direction: column;
 }
 
 .svg-list-item-button{

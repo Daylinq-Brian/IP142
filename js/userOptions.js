@@ -25,4 +25,10 @@ $(document).ready(function (){
     options.viewbox.input.x = document.getElementById('viewbox-x-input');
     options.viewbox.input.y = document.getElementById('viewbox-y-input');
     options.minify.input = document.getElementById('minify-input');
+
+    // making minify toggle on/off for label
+    options.minify.input.addEventListener('change', (e) => {
+        let minifyLabel = document.getElementById('minify-input-label');
+        minifyLabel.innerHTML = e.target.checked ? 'minify: on' : 'minify: off';
+    });
 });

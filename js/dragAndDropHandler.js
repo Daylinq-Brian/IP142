@@ -20,19 +20,22 @@ $(document).ready(function (){
     // when a file is dropped (or multiple) close the box and add the files content to an array
     dropBox.addEventListener('drop', async(event) => {
         event.preventDefault();
+        
+        dropBox.style.display = 'none';
 
         for(let file of event.dataTransfer.files){
             if(new RegExp("^.*\.(svg)$").test(file.name)){
-
-                files.content.push({
-                    name: file.name.replaceAll(' ', '_'), 
-                    content: await files.read(file)
-                });
+                
+                if(!files.content.some(object => object.name == file.name.replaceAll(' ', '_'))){
+                    files.content.push({
+                        name: file.name.replaceAll(' ', '_'), 
+                        content: await files.read(file)
+                    });
+                }
 
             }
+            updateAmount();
+            displayList();
         }
-        
-        dropBox.style.display = 'none';
-        displayList();
     });
 });
