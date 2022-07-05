@@ -5,6 +5,7 @@ body{
     min-height: 100vh;
     background-color: #EEEEF1;
     font-family: 'Roboto', sans-serif;
+    margin: 0;
 }
 
 #file-drop-box{
@@ -23,6 +24,7 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: 100vh;
 }
 
 /* header styling */
@@ -88,6 +90,19 @@ body{
     font-size: 13px;
 }
 
+/* footer */
+#footer{
+    margin-top: auto;
+    width: 100%;
+    font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#footer div{
+    padding: 5px;
+}
+
 /* list */
 
 /**** id and classnames for list items  
@@ -119,10 +134,29 @@ body{
 }
 
 .svg-list-item-preview{
+    height: 300px;
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
+    background-color: #FFF;
+}
+
+.svg-list-item-preview img{
+    max-height: 280px;
 }
 
 .svg-list-item-button{
     margin-left: auto;
+    user-select: none;
+    cursor: pointer;
+    height: 20px;
+    width: 20px;
+}
+
+.svg-list-item-name-container{
+    margin: 10px 0;
+}
+
+.svg-list-item-name-container:hover{
+    color: #323C50;
 }
