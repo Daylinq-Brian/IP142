@@ -3,7 +3,9 @@ formattedSVGs.svgs = [];
 
 // function for formatting all svg's
 formattedSVGs.format = () => {
+
     for(let file of files.content){
+
         // testing for css in the svg and then reformatting it and changing classes
         let tempSVGobj = createElementFromHTML(file.content);
         let tempCSS = '';
@@ -51,6 +53,7 @@ formattedSVGs.format = () => {
             style: tempCSS, 
             group: `\n<g class="SVG-layer" id="${file.name.slice(0, -4)}">\n${tempSVGobj.innerHTML}\n</g>\n`
         });
+
     }
 }
 

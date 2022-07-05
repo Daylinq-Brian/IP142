@@ -9,7 +9,6 @@
     xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" 
     viewBox="0 0 __VIEWBOX-X__ __VIEWBOX-Y__"  
     style="enable-background:new 0 0 __VIEWBOX-X__ __VIEWBOX-Y__;"
-    id="SVGlayered" 
     inkscape:version="0.92.3 (2405546, 2018-03-11)"
     xml:space="preserve">
 <style type="text/css">

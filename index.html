@@ -40,6 +40,7 @@ ____/\\\\\\\\\_______________________________________
                 <input type="number" placeholder="viewbox-x" id="viewbox-x-input">
                 <input type="number" placeholder="viewbox-y" id="viewbox-y-input">
                 <button id="file-input-button">upload</button>
+                <button id="mass-rename">rename all to numbers</button>
                 <input type="file" id="file-input" multiple>
             </div><!-- header-buttons -->
         </div><!-- header -->
@@ -47,11 +48,13 @@ ____/\\\\\\\\\_______________________________________
 
         </div><!-- svg-list -->
         <div id="footer">
-            <div>updated last: 5-7-2022, V2.07</div>
-            <div>By Rick © Daylinq 2022</div>
+            <div id="footer-left"></div>
+            <di id="footer-right"></di></div>
         </div><!-- footer -->
     </div><!-- wrapper -->
     
+    <!-- notifcation box -->
+    <div id="notification-box" style="display: none;"></div>
 
     <!-- dropbox -->
     <div id="file-drop-box"></div>
@@ -63,5 +66,7 @@ ____/\\\\\\\\\_______________________________________
     <script src="js/dragAndDropHandler.js"></script>
     <script src="js/exportFile.js"></script>
     <script src="js/svgList.js"></script>
+    <script src="js/notification.js"></script>
+    <script src="js/footer.js"></script>
 </body>
 </html>

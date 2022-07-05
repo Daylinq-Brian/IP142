@@ -42,4 +42,13 @@ $(document).ready(function (){
         let layerLabel = document.getElementById('layer-input-label');
         layerLabel.innerHTML = e.target.checked ? 'layers: on' : 'layers: off';
     });
+
+    // button to change all names to numbers
+    document.getElementById('mass-rename').addEventListener('click', () => {
+        for(let i = 0; i < files.content.length; i++){
+            files.content[i].name = `${(i + 1).toString().padStart(files.content.length.toString().length, '0')}.svg`;
+        }
+        displayList();
+        notification.add({type: 'numberRename', data: files.content.length});
+    });
 });

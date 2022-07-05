@@ -144,7 +144,6 @@ body{
     height: 300px;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
     background-color: #FFF;
 }
 
@@ -166,4 +165,17 @@ body{
 
 .svg-list-item-name-container:hover{
     color: #323C50;
+}
+
+/* notification-box */
+
+#notification-box{
+    position: fixed;
+    bottom: 50px;
+    left: 10%;
+    right: 10%;
+    background-color: #000;
+    color: #FFF;
+    padding: 12px;
+    border-radius: 12px;
 }

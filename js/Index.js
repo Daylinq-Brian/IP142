@@ -11,16 +11,32 @@ $(document).ready(function (){
 
     // making the upload button functional
     document.getElementById('file-input').addEventListener('change', async() => {
+
+        let JSanimated = 0;
+        
         for (let file of document.getElementById('file-input').files){
-            if(!files.content.some(object => object.name == file.name.replaceAll(' ', '_'))){
-                files.content.push({
-                    name: file.name.replaceAll(' ', '_'), 
-                    content: await files.read(file)
-                });
+            if(new RegExp("^.*\.(svg)$").test(file.name)){
+                let svg = await files.read(file);
+
+                if(svg.includes('<![CDATA[')){
+                    JSanimated++;
+                    continue;
+                }
+                
+                if(!files.content.some(object => object.name == file.name.replaceAll(' ', '_'))){
+                    files.content.push({
+                        name: file.name.replaceAll(' ', '_'), 
+                        content: svg
+                    });
+                }
             }
-    
             updateAmount();
             displayList();
+        }
+
+        if(JSanimated > 0){
+            notification.add({type: 'animated', data: JSanimated});
+            JSanimated = 0; 
         }
     });
 

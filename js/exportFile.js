@@ -36,6 +36,8 @@ exporter.makeFile = async() => {
         console.log(options.minify.input.checked ? vkbeautify.xmlmin(template) : vkbeautify.xml(template));
         exporter.download(options.name.input.value == '' ? `${options.name.value}.svg` : `${options.name.input.value}.svg`, 
                         options.minify.input.checked ? vkbeautify.xmlmin(template) : vkbeautify.xml(template));
+    
+        notification.add({type: 'downloadSingle', data: options.name.input.value == '' ? `${options.name.value}.svg` : `${options.name.input.value}.svg`});
     }else{
         let template = await exporter.loadTemplate('dependencies/singleTemplate.txt');
 
@@ -68,6 +70,8 @@ exporter.makeFile = async() => {
             exporter.download(`${svg.name}.svg`, 
                             options.minify.input.checked ? vkbeautify.xmlmin(download) : vkbeautify.xml(download));
         }
+
+        notification.add({type: 'downloadMultiple', data: formattedSVGs.svgs.length});
     }
 }
 

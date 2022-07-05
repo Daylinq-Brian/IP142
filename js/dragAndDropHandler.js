@@ -20,22 +20,45 @@ $(document).ready(function (){
     // when a file is dropped (or multiple) close the box and add the files content to an array
     dropBox.addEventListener('drop', async(event) => {
         event.preventDefault();
+
+        let JSanimated = 0;
+        let layered = 0;
         
         dropBox.style.display = 'none';
 
         for(let file of event.dataTransfer.files){
             if(new RegExp("^.*\.(svg)$").test(file.name)){
+                let svg = await files.read(file);
+
+                if(svg.includes('<![CDATA[')){
+                    JSanimated++;
+                    continue;
+                }
+
+                if(svg.includes('SVGlayered')){
+                    layered++;
+                    continue;
+                }
                 
                 if(!files.content.some(object => object.name == file.name.replaceAll(' ', '_'))){
                     files.content.push({
                         name: file.name.replaceAll(' ', '_'), 
-                        content: await files.read(file)
+                        content: svg
                     });
                 }
-
             }
             updateAmount();
             displayList();
+        }
+
+        if(JSanimated > 0){
+            notification.add({type: 'animated', data: JSanimated});
+            JSanimated = 0; 
+        }
+
+        if(layered > 0){
+            notification.add({type: 'layered', data: layered});
+            layered = 0; 
         }
     });
 });

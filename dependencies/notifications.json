@@ -1,0 +1,7 @@
+{
+    "animated": "__DATA__ svg's have been left out because they have javscript animations",
+    "layered": "__DATA__ svg's have been left out because they are layered",
+    "numberRename": "__DATA__ svg's have been renamed with numbers",
+    "downloadSingle": "__DATA__ has been downloaded",
+    "downloadMultiple": "__DATA__ files have been downloaded"
+}
