@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns:dc="http://purl.org/dc/elements/1.1/" 
+    xmlns:cc="http://creativecommons.org/ns#" 
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+    xmlns:svg="http://www.w3.org/2000/svg" 
+    xmlns="http://www.w3.org/2000/svg" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" 
+    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" 
+    viewBox="0 0 __VIEWBOX-X__ __VIEWBOX-Y__"  
+    style="enable-background:new 0 0 __VIEWBOX-X__ __VIEWBOX-Y__;"
+    id="SVGlayered" 
+    inkscape:version="0.92.3 (2405546, 2018-03-11)"
+    xml:space="preserve">
+<style type="text/css">
+
+    __STYLING__
+
+</style>
+
+    __GROUPS__
+
+</svg>

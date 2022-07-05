@@ -16,6 +16,10 @@ let options = {
     minify: {
         value: false,
         input: null
+    },
+    layer: {
+        value: false,
+        input: null
     }
 }
 
@@ -25,10 +29,17 @@ $(document).ready(function (){
     options.viewbox.input.x = document.getElementById('viewbox-x-input');
     options.viewbox.input.y = document.getElementById('viewbox-y-input');
     options.minify.input = document.getElementById('minify-input');
+    options.layer.input = document.getElementById('layer-input');
 
     // making minify toggle on/off for label
     options.minify.input.addEventListener('change', (e) => {
         let minifyLabel = document.getElementById('minify-input-label');
         minifyLabel.innerHTML = e.target.checked ? 'minify: on' : 'minify: off';
+    });
+
+    // making layer toggle on/off for label
+    options.layer.input.addEventListener('change', (e) => {
+        let layerLabel = document.getElementById('layer-input-label');
+        layerLabel.innerHTML = e.target.checked ? 'layers: on' : 'layers: off';
     });
 });

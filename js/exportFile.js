@@ -1,47 +1,81 @@
 let exporter = {};
 
 exporter.makeFile = async() => {
-    let template = await exporter.loadTemplate();
-    let styleString = '';
-    let groupString = '';
+    if(options.layer.input.checked){
+        let template = await exporter.loadTemplate('dependencies/layerTemplate.txt');
+        let styleString = '';
+        let groupString = '';
 
-    // filling the style and group string
-    for(let svg of formattedSVGs.svgs){
-        styleString += svg.style;
-        groupString += svg.group;
-    }
+        // filling the style and group string
+        for(let svg of formattedSVGs.svgs){
+            styleString += svg.style;
+            groupString += svg.group;
+        }
 
-    // clearing the formatted svg's array
-    formattedSVGs.svgs = [];
+        // clearing the formatted svg's array
+        formattedSVGs.svgs = [];
 
-    // testing for and setting the viewbox values
-    if(options.viewbox.input.x.value == '' || options.viewbox.input.y.value == ''){
-        // grabbing the viewbox from the first svg in the array
-        let svgObject = createElementFromHTML(files.content[0].content);
-        options.viewbox.value.x = svgObject.getAttribute('viewBox').split(' ')[2];
-        options.viewbox.value.y = svgObject.getAttribute('viewBox').split(' ')[3];
+        // testing for and setting the viewbox values
+        if(options.viewbox.input.x.value == '' || options.viewbox.input.y.value == ''){
+            // grabbing the viewbox from the first svg in the array
+            let svgObject = createElementFromHTML(files.content[0].content);
+            options.viewbox.value.x = svgObject.getAttribute('viewBox').split(' ')[2];
+            options.viewbox.value.y = svgObject.getAttribute('viewBox').split(' ')[3];
+        }else{
+            // if both viewbox inputs are set then pick those
+            options.viewbox.value.x = options.viewbox.input.x.value;
+            options.viewbox.value.y = options.viewbox.input.y.value;
+        }
+
+        // filling the template
+        template = template.replaceAll('__VIEWBOX-X__', options.viewbox.value.x);
+        template = template.replaceAll('__VIEWBOX-Y__', options.viewbox.value.y);
+        template = template.replace('__STYLING__', options.minify.input.checked ? vkbeautify.cssmin(styleString) : vkbeautify.css(styleString));
+        template = template.replace('__GROUPS__', groupString);
+        
+        console.log(options.minify.input.checked ? vkbeautify.xmlmin(template) : vkbeautify.xml(template));
+        exporter.download(options.name.input.value == '' ? `${options.name.value}.svg` : `${options.name.input.value}.svg`, 
+                        options.minify.input.checked ? vkbeautify.xmlmin(template) : vkbeautify.xml(template));
     }else{
-        // if both viewbox inputs are set then pick those
-        options.viewbox.value.x = options.viewbox.input.x.value;
-        options.viewbox.value.y = options.viewbox.input.y.value;
-    }
+        let template = await exporter.loadTemplate('dependencies/singleTemplate.txt');
 
-    // filling the template
-    template = template.replaceAll('__VIEWBOX-X__', options.viewbox.value.x);
-    template = template.replaceAll('__VIEWBOX-Y__', options.viewbox.value.y);
-    template = template.replace('__STYLING__', options.minify.input.checked ? vkbeautify.cssmin(styleString) : vkbeautify.css(styleString));
-    template = template.replace('__GROUPS__', groupString);
-    
-    console.log(options.minify.input.checked ? vkbeautify.xmlmin(template) : vkbeautify.xml(template));
-    exporter.download(options.name.input.value == '' ? `${options.name.value}.svg` : `${options.name.input.value}.svg`, 
-                      options.minify.input.checked ? vkbeautify.xmlmin(template) : vkbeautify.xml(template));
+        // testing for and setting the viewbox values
+        if(options.viewbox.input.x.value == '' || options.viewbox.input.y.value == ''){
+            // grabbing the viewbox from the first svg in the array
+            let svgObject = createElementFromHTML(files.content[0].content);
+            options.viewbox.value.x = svgObject.getAttribute('viewBox').split(' ')[2];
+            options.viewbox.value.y = svgObject.getAttribute('viewBox').split(' ')[3];
+        }else{
+            // if both viewbox inputs are set then pick those
+            options.viewbox.value.x = options.viewbox.input.x.value;
+            options.viewbox.value.y = options.viewbox.input.y.value;
+        }
+
+        // filling the template
+        template = template.replaceAll('__VIEWBOX-X__', options.viewbox.value.x);
+        template = template.replaceAll('__VIEWBOX-Y__', options.viewbox.value.y);
+
+        for(let svg of formattedSVGs.svgs){
+            let download = template;
+
+            // filling the template
+            download = download.replaceAll('__VIEWBOX-X__', options.viewbox.value.x);
+            download = download.replaceAll('__VIEWBOX-Y__', options.viewbox.value.y);
+            download = download.replace('__STYLING__', options.minify.input.checked ? vkbeautify.cssmin(svg.style) : vkbeautify.css(svg.style));
+            download = download.replace('__GROUPS__', svg.group);
+        
+            console.log(options.minify.input.checked ? vkbeautify.xmlmin(download) : vkbeautify.xml(download));
+            exporter.download(`${svg.name}.svg`, 
+                            options.minify.input.checked ? vkbeautify.xmlmin(download) : vkbeautify.xml(download));
+        }
+    }
 }
 
 // this function loads the template
-exporter.loadTemplate = () => {
+exporter.loadTemplate = (template) => {
     return new Promise(resolve => {
         $.ajax({
-            url: 'dependencies/template.txt',
+            url: template,
             success: function (data){
                 resolve(data);
             }
